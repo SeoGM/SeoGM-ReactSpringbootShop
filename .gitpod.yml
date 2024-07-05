@@ -1,19 +1,19 @@
 tasks:
   - name: Spring Boot (Gradle)
     init: |
-      cd backend
+      cd shop/backend
       sdk install java 17.0.4-tem
       sdk use java 17.0.4-tem
       ./gradlew build -x test
     command: |
-      cd backend
+      cd shop/backend
       ./gradlew bootRun
   - name: React & TypeScript
     init: |
-      cd frontend
+      cd shop/frontend
       npm install
     command: |
-      cd frontend
+      cd shop/frontend
       npm start
 ports:
   - port: 8080
