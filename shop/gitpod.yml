@@ -1,0 +1,22 @@
+tasks:
+  - name: Spring Boot (Gradle)
+    init: |
+      cd backend
+      sdk install java 17.0.4-tem
+      sdk use java 17.0.4-tem
+      ./gradlew build -x test
+    command: |
+      cd backend
+      ./gradlew bootRun
+  - name: React & TypeScript
+    init: |
+      cd frontend
+      npm install
+    command: |
+      cd frontend
+      npm start
+ports:
+  - port: 8080
+    onOpen: open-preview
+  - port: 3000
+    onOpen: open-preview
