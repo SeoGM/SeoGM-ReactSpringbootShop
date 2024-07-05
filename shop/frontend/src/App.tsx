@@ -1,36 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-interface Product {
-  id: number;
-  name: string;
-}
-
-const App: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+function App() {
+  const [message, setMessage] = useState<string>('');
 
   useEffect(() => {
-    try {
-      fetch('/api/products')
-        .then(response => response.json())
-        .then(data => setProducts(data));
-    } catch (error) {
-      console.log(error);
-    }
+    fetch('http://localhost:8080/api/message')
+      .then(response => response.text())
+      .then(data => setMessage(data))
+      .catch(error => console.error('Error:', error));
   }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Product List</h1>
-        <ul>
-          {products.map(product => (
-            <li key={product.id}>{product.name}</li>
-          ))}
-        </ul>
-      </header>
+      <h1>React + Spring Boot Example</h1>
+      <p>Message from backend: {message}</p>
     </div>
   );
-};
+}
 
 export default App;
