@@ -15,7 +15,7 @@ public class ShopApplication {
 }
 
 @RestController
-public class MessageController {
+class MessageController {
     @GetMapping("/api/message")
     public String getMessage() {
         return "Hello from Spring Boot!";

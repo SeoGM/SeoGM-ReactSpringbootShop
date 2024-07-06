@@ -2,7 +2,9 @@ tasks:
   - name: Spring Boot (Gradle)
     init: |
       cd shop/backend
-      sdk install java 17.0.4-tem
+      curl -s "https://get.sdkman.io" | bash
+      source "$HOME/.sdkman/bin/sdkman-init.sh"
+      sdk install java 17.0.4-tem -y
       sdk use java 17.0.4-tem
       ./gradlew build -x test
     command: |
