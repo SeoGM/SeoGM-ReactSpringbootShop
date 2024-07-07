@@ -4,9 +4,7 @@ tasks:
       cd shop/backend
       curl -s "https://get.sdkman.io" | bash
       source "$HOME/.sdkman/bin/sdkman-init.sh"
-      export SDKMAN_AUTO_ANSWER=true
-      sdk install java 17.0.4-tem
-      sdk use java 17.0.4-tem
+      yes | sdk install java 17.0.4-tem
       ./gradlew build -x test
     command: |
       cd shop/backend
