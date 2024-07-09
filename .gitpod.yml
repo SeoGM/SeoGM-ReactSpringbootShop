@@ -15,7 +15,7 @@ tasks:
       npm install
     command: |
       cd shop/frontend
-      npm start
+      REACT_APP_GITPOD_WORKSPACE_URL=$(gp url 3000) npm start
 ports:
   - port: 8080
     onOpen: open-preview
