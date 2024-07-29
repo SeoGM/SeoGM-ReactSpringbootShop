@@ -22,7 +22,6 @@ jobs:
         distribution: 'temurin'
 
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
-    # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
 
@@ -44,10 +43,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
-    # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
-    - name: Generate and submit dependency graph
+    - name: Generate dependency graph
       working-directory: shop/backend
       run: ./gradlew dependencies --configuration runtimeClasspath
-    - name: Submit dependency graph
-      uses: gradle/dependency-submission-action@v2
+
+    - name: Upload dependency graph
+      uses: actions/upload-artifact@v2
+      with:
+        name: dependency-graph
+        path: shop/backend/build/reports/dependency-graph.json
